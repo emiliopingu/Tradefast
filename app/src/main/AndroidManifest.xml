@@ -9,6 +9,26 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".PantallaInfoSubastas">
+        </activity>
+        <activity android:name=".PantallaInfoNovedades">
+        </activity>
+        <activity android:name=".PantallaPrincipalSubastas">
+        </activity>
+        <activity android:name=".PantallaPrincipalNovedades">
+        </activity>
+        <activity android:name=".PantallaSubirPuja">
+        </activity>
+        <activity android:name=".PantallaCompraConTarjeta">
+        </activity>
+        <activity android:name=".PantallaPersonalizarPerfil">
+        </activity>
+        <activity android:name=".PantallaUsuario">
+        </activity>
+        <activity android:name=".PantallaDeAjustes">
+        </activity>
+        <activity android:name=".PantallaRegistro">
+        </activity>
         <activity
                 android:name=".MainActivity"
                 android:label="@string/app_name"
