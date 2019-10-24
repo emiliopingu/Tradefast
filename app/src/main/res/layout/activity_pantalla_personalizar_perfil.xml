@@ -5,6 +5,69 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".PantallaPersonalizarPerfil">
+        tools:context=".PantallaPersonalizarPerfil" android:background="#D8FF8922">
 
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" tools:srcCompat="@tools:sample/avatars[11]"
+            android:id="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.078" android:layout_marginBottom="488dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+            android:text="CambiarImagen"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:id="@+id/textView" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="36dp"
+            app:layout_constraintHorizontal_bias="0.075" android:textAlignment="center" android:textSize="16sp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="cambiarnombre"
+            android:ems="10"
+            android:id="@+id/etCambioNombre" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="132dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="cambiar correo"
+            android:ems="10"
+            android:id="@+id/etCambioCorreo" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="412dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.34"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="cambiar contraseña"
+            android:ems="10"
+            android:id="@+id/etCambioContraseña" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="324dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.34"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="cambiar pago con Paypal"
+            android:ems="10"
+            android:id="@+id/etCambioDePaypal" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="236dp" app:layout_constraintHorizontal_bias="0.34"/>
+    <Button
+            android:text="Confirmar"
+            android:layout_width="149dp"
+            android:layout_height="70dp"
+            android:id="@+id/botonConfirmarAjustePerfil" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="72dp"
+            android:background="#D8FF8922" app:layout_constraintHorizontal_bias="0.426"/>
 </android.support.constraint.ConstraintLayout>
