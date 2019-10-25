@@ -5,13 +5,14 @@
                                              android:layout_height="match_parent" android:background="#D8FF8922">
 
     <ImageView
-            android:layout_width="163dp"
-            android:layout_height="134dp" tools:srcCompat="@tools:sample/avatars[3]"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" tools:src="@mipmap/ic_launcher_round"
             android:id="@+id/imageView" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.158"/>
+            app:layout_constraintVertical_bias="0.158" android:background="@color/colorAccent"
+            app:srcCompat="@mipmap/ic_launcher"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@android:drawable/ic_menu_preferences"
@@ -53,7 +54,7 @@
             android:text="@string/botonRegistroInicio"
             android:layout_width="134dp"
             android:layout_height="38dp"
-            android:id="@+id/button" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
+            android:id="@+id/botonRegistrarse" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
             android:layout_marginBottom="84dp" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.991" android:background="#D8FF8922"/>
@@ -61,9 +62,9 @@
             android:text="@string/botonIniciosecion"
             android:layout_width="111dp"
             android:layout_height="38dp"
-            android:id="@+id/button2" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="36dp"
+            android:id="@+id/botonIniciarSecion" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="36dp"
             android:layout_marginTop="596dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.089"
-            app:layout_constraintStart_toEndOf="@+id/button" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/botonRegistrarse" android:layout_marginStart="8dp"
             app:layout_constraintHorizontal_bias="0.922" android:background="#D8FF8922"/>
 </android.support.constraint.ConstraintLayout>
