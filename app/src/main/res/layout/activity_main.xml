@@ -5,13 +5,13 @@
                                              android:layout_height="match_parent" android:background="#D8FF8922">
 
     <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" tools:src="@mipmap/ic_launcher_round"
+            android:layout_width="119dp"
+            android:layout_height="95dp" tools:src="@mipmap/ic_launcher_round"
             android:id="@+id/imageView" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.158" android:background="@color/colorAccent"
+            app:layout_constraintVertical_bias="0.106" android:background="@color/colorAccent"
             app:srcCompat="@mipmap/ic_launcher"/>
     <ImageButton
             android:layout_width="wrap_content"
@@ -29,27 +29,30 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintTop_toBottomOf="@+id/imageView" android:textAlignment="center"
             android:textSize="25sp" android:layout_marginTop="16dp" app:layout_constraintHorizontal_bias="0.498"
-            android:textStyle="italic"/>
+            android:textStyle="italic" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.094"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Nombre usuario o correo"
             android:ems="10"
             android:id="@+id/nombreInicio" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="56dp"
-            app:layout_constraintTop_toBottomOf="@+id/NombreText"/>
+            app:layout_constraintTop_toBottomOf="@+id/NombreText" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
+            android:hint="Nombre usuario o correo"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="contraseña"
             android:ems="10"
             android:id="@+id/contraseñaInicio" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="68dp"
-            app:layout_constraintTop_toBottomOf="@+id/nombreInicio"/>
+            app:layout_constraintTop_toBottomOf="@+id/nombreInicio" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
+            android:hint="contraseña"/>
     <Button
             android:text="@string/botonRegistroInicio"
             android:layout_width="134dp"

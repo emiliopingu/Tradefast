@@ -8,11 +8,15 @@
         tools:context=".PantallaPrincipalNovedades" android:background="#D8FF8922">
 
     <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" tools:srcCompat="@tools:sample/avatars[11]"
+            android:layout_width="99dp"
+            android:layout_height="109dp"
             android:id="@+id/imageView4"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="40dp"
-            android:layout_marginTop="44dp" app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_marginTop="48dp" app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_launcher" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0"/>
     <Button
             android:text="Novedades"
             android:layout_width="203dp"
@@ -49,10 +53,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="buscaor"
             android:ems="10"
             android:id="@+id/buscadorSubastas" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/layoutSubastas"
-            app:layout_constraintHorizontal_bias="0.879" android:layout_marginBottom="64dp"/>
+            app:layout_constraintHorizontal_bias="0.879" android:layout_marginBottom="64dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" android:hint="buscador"/>
 </android.support.constraint.ConstraintLayout>

@@ -8,13 +8,15 @@
         tools:context=".PantallaPersonalizarPerfil" android:background="#D8FF8922">
 
     <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" tools:srcCompat="@tools:sample/avatars[11]"
+            android:layout_width="102dp"
+            android:layout_height="130dp"
             android:id="@+id/imageView3"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="0.078" android:layout_marginBottom="488dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@mipmap/ic_launcher"/>
     <TextView
             android:text="CambiarImagen"
             android:layout_width="wrap_content"
@@ -27,40 +29,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="cambiarnombre"
             android:ems="10"
             android:id="@+id/etCambioNombre" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="132dp"/>
+            android:layout_marginEnd="4dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="132dp"
+            android:hint="cambiarnombre" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.042"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintHorizontal_bias="0.923"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="cambiar correo"
             android:ems="10"
             android:id="@+id/etCambioCorreo" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="412dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.34"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.34"
+            android:hint="cambiar correo" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="cambiar contraseña"
             android:ems="10"
             android:id="@+id/etCambioContraseña" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="324dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.34"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.34"
+            android:hint="Vuelve a escribir la contraseña" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.997"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="cambiar pago con Paypal"
             android:ems="10"
             android:id="@+id/etCambioDePaypal" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="236dp" app:layout_constraintHorizontal_bias="0.34"/>
+            android:layout_marginBottom="236dp" app:layout_constraintHorizontal_bias="0.34"
+            android:hint="cambiar pago con Paypal" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="1.0"/>
     <Button
             android:text="Confirmar"
             android:layout_width="149dp"
@@ -69,5 +77,6 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="72dp"
-            android:background="#D8FF8922" app:layout_constraintHorizontal_bias="0.426"/>
+            android:background="#D8FF8922" app:layout_constraintHorizontal_bias="0.402" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/etCambioContraseña" app:layout_constraintVertical_bias="0.931"/>
 </android.support.constraint.ConstraintLayout>
