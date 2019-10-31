@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-                                             android:layout_height="match_parent" android:background="#D8FF8922">
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="@android:color/background_light">
 
     <ImageView
             android:layout_width="119dp"
@@ -11,7 +13,7 @@
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.106" android:background="@color/colorAccent"
+            app:layout_constraintVertical_bias="0.106" android:background="#D8FF8922"
             app:srcCompat="@mipmap/ic_launcher"/>
     <ImageButton
             android:layout_width="wrap_content"
@@ -20,17 +22,18 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="0.896" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="32dp"/>
+            android:layout_marginTop="32dp" android:backgroundTint="#D8FF8922"/>
     <TextView
             android:text="@string/app_name"
-            android:layout_width="132dp"
-            android:layout_height="36dp"
+            android:layout_width="161dp"
+            android:layout_height="45dp"
             android:id="@+id/NombreText" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintTop_toBottomOf="@+id/imageView" android:textAlignment="center"
-            android:textSize="25sp" android:layout_marginTop="16dp" app:layout_constraintHorizontal_bias="0.498"
+            android:textSize="28sp" android:layout_marginTop="16dp" app:layout_constraintHorizontal_bias="0.498"
             android:textStyle="italic" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.094"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.094"
+            android:textColor="@android:color/holo_orange_dark"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +44,7 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="56dp"
             app:layout_constraintTop_toBottomOf="@+id/NombreText" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
-            android:hint="Nombre usuario o correo"/>
+            android:hint="Nombre usuario o correo" android:backgroundTint="#D8FF8922"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,22 +55,28 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="68dp"
             app:layout_constraintTop_toBottomOf="@+id/nombreInicio" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
-            android:hint="contraseña"/>
+            android:hint="contraseña" android:backgroundTint="#D8FF8922" android:backgroundTintMode="add"/>
     <Button
             android:text="@string/botonRegistroInicio"
             android:layout_width="134dp"
             android:layout_height="38dp"
-            android:id="@+id/botonRegistrarse" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
+            android:id="@+id/botonRegistrarse" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp"
             android:layout_marginBottom="84dp" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.991" android:background="#D8FF8922"/>
+            app:layout_constraintVertical_bias="0.991" android:background="@android:color/holo_orange_dark"
+            style="@android:style/Widget.Material.Light.Button.Borderless" android:backgroundTintMode="add"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.008" android:textColor="@android:color/background_light"/>
     <Button
             android:text="@string/botonIniciosecion"
             android:layout_width="111dp"
             android:layout_height="38dp"
-            android:id="@+id/botonIniciarSecion" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="36dp"
+            android:id="@+id/botonIniciarSecion" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="36dp"
             android:layout_marginTop="596dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.089"
             app:layout_constraintStart_toEndOf="@+id/botonRegistrarse" android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.922" android:background="#D8FF8922"/>
+            app:layout_constraintHorizontal_bias="0.922" android:background="@android:color/holo_orange_dark"
+            android:textColor="@android:color/background_light"/>
 </android.support.constraint.ConstraintLayout>

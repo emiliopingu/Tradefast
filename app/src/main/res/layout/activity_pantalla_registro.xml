@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".PantallaRegistro" android:background="#D8FF8922">
+        tools:context=".PantallaRegistro" android:background="@android:color/background_light">
 
     <EditText
             android:layout_width="wrap_content"
@@ -18,7 +18,7 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="36dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.39"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.0"/>
+            app:layout_constraintVertical_bias="0.0" android:backgroundTint="@android:color/holo_orange_dark"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="464dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.39"
             android:hint="Contraseña" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.99"/>
+            app:layout_constraintVertical_bias="0.99" android:backgroundTint="@android:color/holo_orange_dark"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +40,8 @@
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.39"
             android:hint="Vuelva a escribir la contraseña" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.99"/>
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.99"
+            android:backgroundTint="@android:color/holo_orange_dark"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +52,7 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="564dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.39"
             android:hint="Apellido" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"/>
+            app:layout_constraintVertical_bias="1.0" android:backgroundTint="@android:color/holo_orange_dark"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,7 +63,8 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="268dp"
             app:layout_constraintHorizontal_bias="0.39" android:hint="Correo" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.992"/>
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.992"
+            android:backgroundTint="@android:color/holo_orange_dark"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,7 +75,9 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="176dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.39"
             android:hint="Edad" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.996"/>
+            app:layout_constraintVertical_bias="0.996" android:textColor="@android:color/holo_orange_dark"
+            android:drawableTint="@android:color/holo_orange_dark"
+            android:backgroundTint="@android:color/holo_orange_dark"/>
     <Button
             android:text="Registrarse"
             android:layout_width="133dp"
@@ -81,6 +85,8 @@
             android:id="@+id/botonDeRegsitro1" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
-            app:layout_constraintHorizontal_bias="0.438" android:background="#D8FF8922" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.957"/>
+            app:layout_constraintHorizontal_bias="0.438" android:background="@android:color/holo_orange_dark"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.957"
+            android:textColor="@android:color/background_light"/>
 </android.support.constraint.ConstraintLayout>
