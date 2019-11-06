@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "212712087168",
+    "firebase_url": "https://tradefast-b3c66.firebaseio.com",
+    "project_id": "tradefast-b3c66",
+    "storage_bucket": "tradefast-b3c66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212712087168:android:ce25587a12019748405065",
+        "android_client_info": {
+          "package_name": "com.example.tradefast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212712087168-ihq1vthmtkd8r9he6sc79tdpb3q65hmq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tradefast",
+            "certificate_hash": "c6dbfd07eb641dab2a940a7fda5956935f935fb7"
+          }
+        },
+        {
+          "client_id": "212712087168-a0mn9idjk1nqqac6rvcus8s5rk5fvdi2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcfO0YWLphdv6HT0852vptFa7pdXKhTQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212712087168-a0mn9idjk1nqqac6rvcus8s5rk5fvdi2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

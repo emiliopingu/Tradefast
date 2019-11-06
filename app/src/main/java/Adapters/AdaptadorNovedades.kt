@@ -2,11 +2,11 @@ package Adapters
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+/*
 class AdapterTareas(private val context: Context, var list: MutableList<Task>) :
     RecyclerView.Adapter<AdapterTareas.viewHolder>() {
 
@@ -30,7 +30,7 @@ class AdapterTareas(private val context: Context, var list: MutableList<Task>) :
         holder.view.tvUsuarioTarea.text = usuario
 
 
-        holder.view.setOnClickListener {
+      /*  holder.view.setOnClickListener {
             val intent1 = Intent(context, DescripcionTareaActivity::class.java)
             intent1.putExtra("tareaDescripcion", nombre)
             intent1.putExtra("usuarioDescripcion", usuario)
@@ -38,7 +38,7 @@ class AdapterTareas(private val context: Context, var list: MutableList<Task>) :
             intent1.putExtra("lugarDescripcion", lugar)
             intent1.putExtra("fechaDescripcion", fecha)
             context.startActivity(intent1)
-        }
+        }*/
     }
 
     override fun getItemCount(): Int {
@@ -46,5 +46,6 @@ class AdapterTareas(private val context: Context, var list: MutableList<Task>) :
     }
 
 
-    inner class viewHolder(val view: View) : RecyclerView.ViewHolder(view)
+
 }
+*/
