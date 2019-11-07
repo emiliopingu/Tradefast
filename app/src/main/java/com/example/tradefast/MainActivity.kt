@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var nombreInicio: EditText
-    private lateinit var contraseñaInicio: EditText
+    private lateinit var contrasenaInicio: EditText
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,13 +25,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         nombreInicio = findViewById(R.id.nombreInicio)
-        contraseñaInicio = findViewById(R.id.contraseñaInicio)
+        contrasenaInicio = findViewById(R.id.contraseñaInicio)
         auth = FirebaseAuth.getInstance()
 
 
         botonIniciarSecion.setOnClickListener {
             val intIniciarSecion = Intent(this, PantallaPrincipalNovedades::class.java)
             startActivity(intIniciarSecion)
+        }
+
+        olvidarContraseña.setOnClickListener {
+            val mandarAcorreo = Intent(this, PantallaOlvidarContrasena::class.java)
+            startActivity(mandarAcorreo)
         }
     }
 
