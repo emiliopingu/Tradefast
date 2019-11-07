@@ -38,7 +38,9 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
         lista?.layoutManager=layoutManager
         lista?.adapter=adaptador
 
-
+        imagenUsuario1.setOnClickListener {
+            val imagen1 = Intent(this,PantallaUsuario::class.java)
+            startActivity(imagen1 ) }
 
         botonSubastasPrincipal.setOnClickListener {
             val intSubastas = Intent(this,PantallaPrincipalSubastas::class.java)
