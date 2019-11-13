@@ -38,15 +38,16 @@ class MainActivity : AppCompatActivity() {
             val mandarAcorreo = Intent(this, PantallaOlvidarContrasena::class.java)
             startActivity(mandarAcorreo)
         }
-    }
 
-    fun vistaRegistrar() {
         botonRegistrarse.setOnClickListener {
             val intRegistrar = Intent(this, PantallaRegistro::class.java)
             startActivity(intRegistrar)
         }
-
     }
+
+
+
+
 
     private fun loginUsuario() {
         val usuario: String = nombreInicio.text.toString()
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) {
                     task->
                     if(task.isSuccessful){
-                        vistaRegistrar()
+                        //vistaRegistrar()
                     }else{
                         Toast.makeText(this,"Error de autentificación vuelve a escribir los datos",Toast.LENGTH_LONG)
                     }

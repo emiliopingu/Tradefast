@@ -3,9 +3,7 @@ package com.example.tradefast
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_pantalla_registro.*
-import android.app.ProgressDialog
 import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
@@ -14,7 +12,6 @@ import android.widget.Toast
 
 
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -49,14 +46,10 @@ class PantallaRegistro : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
 
-        dbreference = database.reference.child("Usuario")
+        dbreference = database.getReference("User")
 
 
 
-        botonDeRegsitro1.setOnClickListener {
-            val intre = Intent(this, MainActivity::class.java)
-            startActivity(intre)
-        }
     }
 
     fun botonDeRegsitro1(view: View) {
@@ -66,29 +59,42 @@ class PantallaRegistro : AppCompatActivity() {
     private fun crearCuenta() {
         val nombre: String = RegistroNombre.text.toString()
         val apellido: String = regsitroApellido.text.toString()
-        val contraseña: String = RegistroContraseña.text.toString()
-        val contraseña2: String = RegistroContraseña2.text.toString()
+        val contrasena: String = RegistroContraseña.text.toString()
+        val contrasena2: String = RegistroContraseña2.text.toString()
         val correo: String = registroCorreoElectronico.text.toString()
         val edad: String = registroEdad.text.toString()
 
-        if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(apellido) && !TextUtils.isEmpty(contraseña) &&
-            !TextUtils.isEmpty(contraseña2) && !TextUtils.isEmpty(correo) && !TextUtils.isEmpty(edad)
+        if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(apellido) && !TextUtils.isEmpty(contrasena) &&
+            !TextUtils.isEmpty(contrasena2) && !TextUtils.isEmpty(correo) && !TextUtils.isEmpty(edad)
         ) {
+            if (contrasena==contrasena2){
 
-            progressBar2.visibility = View.VISIBLE
+                if (edad!="0" || edad!="1" || edad!="2" || edad!="3" || edad!="4" || edad!="5" || edad!="6" || edad!="7" || edad!="8" ||
+                    edad!="9" || edad!="10" || edad!="11" || edad=="12" || edad!="13" || edad!="14" || edad!="15" || edad!="16" || edad!="17" ){
+                    progressBar2.visibility = View.VISIBLE
 
-            auth.createUserWithEmailAndPassword(correo, contraseña).addOnCompleteListener(this) { task ->
-                if (task.isComplete) {
-                    val usuario: FirebaseUser? = auth.currentUser
-                    verificarEmail(usuario)
+                    auth.createUserWithEmailAndPassword(correo,contrasena).addOnCompleteListener(this) { task ->
+                        if (task.isComplete) {
+                            val id: String? =dbreference.push().key
+                            val datosUsuario= ObjetoUsuario(id,nombre,apellido,contrasena,correo,edad)
+                            if (id != null) {
+                                dbreference.child("Usuario").child(id).setValue(datosUsuario)
 
-                    val usuarioBD = dbreference.child(usuario?.uid!!)
-                    usuarioBD.child("Nombre").setValue(nombre)
-                    usuarioBD.child("Apellido").setValue(apellido)
-                    usuarioBD.child("Edad").setValue(edad)
+                            }
+
+                        }
+                    }
                     vistaLogin()
+
+                }else{
+                    Toast.makeText(this,"Necesitas ser mayor de edad",Toast.LENGTH_LONG)
                 }
+            }else{
+                Toast.makeText(this,"Escriba bien la contraseña",Toast.LENGTH_LONG)
             }
+
+
+
         }
 
 
@@ -98,14 +104,4 @@ class PantallaRegistro : AppCompatActivity() {
         startActivity(Intent(this, MainActivity::class.java))
     }
 
-    private fun verificarEmail(usuario: FirebaseUser?) {
-        usuario?.sendEmailVerification()?.addOnCompleteListener(this) { task ->
-            if (task.isComplete) {
-                Toast.makeText(this, "Tu correo se ha enviado correctamente", Toast.LENGTH_LONG)
-
-            } else {
-                Toast.makeText(this, "Ha ocurrido un error a mandar tu correo", Toast.LENGTH_LONG)
-            }
-        }
-    }
 }

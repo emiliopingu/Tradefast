@@ -14,7 +14,7 @@ class PantallaUsuario : AppCompatActivity() {
 
 
         editarPerfil.setOnClickListener {
-            val edit = Intent(this,EditarPerfil::class.java)
+            val edit = Intent(this,PantallaPersonalizarPerfil::class.java)
             startActivity(edit)
         }
     }
