@@ -13,6 +13,5 @@ class PantallaInfoNovedades : AppCompatActivity() {
         setContentView(R.layout.activity_pantalla_info_novedades)
 
 
-
     }
 }

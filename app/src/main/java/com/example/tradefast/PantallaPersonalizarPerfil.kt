@@ -12,7 +12,7 @@ class PantallaPersonalizarPerfil : AppCompatActivity() {
         setContentView(R.layout.activity_pantalla_personalizar_perfil)
 
         botonConfirmarAjustePerfil.setOnClickListener {
-            val intPerfilAjuste = Intent(this,PantallaPrincipalNovedades::class.java)
+            val intPerfilAjuste = Intent(this, PantallaPrincipalNovedades::class.java)
             startActivity(intPerfilAjuste)
         }
     }

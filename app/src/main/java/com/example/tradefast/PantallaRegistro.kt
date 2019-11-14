@@ -3,7 +3,6 @@ package com.example.tradefast
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_pantalla_registro.*
 import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
@@ -12,8 +11,10 @@ import android.widget.Toast
 
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class PantallaRegistro : AppCompatActivity() {
@@ -49,7 +50,6 @@ class PantallaRegistro : AppCompatActivity() {
         dbreference = database.getReference("User")
 
 
-
     }
 
     fun botonDeRegsitro1(view: View) {
@@ -67,37 +67,49 @@ class PantallaRegistro : AppCompatActivity() {
         if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(apellido) && !TextUtils.isEmpty(contrasena) &&
             !TextUtils.isEmpty(contrasena2) && !TextUtils.isEmpty(correo) && !TextUtils.isEmpty(edad)
         ) {
-            if (contrasena==contrasena2){
+            if (contrasena.length < 6 && contrasena2.length < 6) {
 
-                if (edad!="0" || edad!="1" || edad!="2" || edad!="3" || edad!="4" || edad!="5" || edad!="6" || edad!="7" || edad!="8" ||
-                    edad!="9" || edad!="10" || edad!="11" || edad=="12" || edad!="13" || edad!="14" || edad!="15" || edad!="16" || edad!="17" ){
-                    progressBar2.visibility = View.VISIBLE
+                if (contrasena == contrasena2) {
 
-                    auth.createUserWithEmailAndPassword(correo,contrasena).addOnCompleteListener(this) { task ->
-                        if (task.isComplete) {
-                            val id: String? =dbreference.push().key
-                            val datosUsuario= ObjetoUsuario(id,nombre,apellido,contrasena,correo,edad)
-                            if (id != null) {
-                                dbreference.child("Usuario").child(id).setValue(datosUsuario)
+                    if (edad != "0" || edad != "1" || edad != "2" || edad != "3" || edad != "4" || edad != "5" || edad != "6" || edad != "7" || edad != "8" ||
+                        edad != "9" || edad != "10" || edad != "11" || edad == "12" || edad != "13" || edad != "14" || edad != "15" || edad != "16" || edad != "17"
+                    ) {
+                        progressBarLogin.visibility = View.VISIBLE
 
+                        auth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                val id: String? = dbreference.push().key
+                                val datosUsuario = ObjetoUsuario(id, nombre, apellido, contrasena, correo, edad)
+                                if (id != null) {
+                                    dbreference.child("Usuario").child(id).setValue(datosUsuario)
+
+                                }
+
+                            } else {
+                                if (task.exception is FirebaseAuthUserCollisionException) {
+                                    Toast.makeText(this@PantallaRegistro, "Esta cuenta ya existe", Toast.LENGTH_LONG)
+                                }
                             }
-
                         }
-                    }
-                    vistaLogin()
+                        vistaLogin()
 
-                }else{
-                    Toast.makeText(this,"Necesitas ser mayor de edad",Toast.LENGTH_LONG)
+                    } else {
+                        Toast.makeText(this@PantallaRegistro, "Necesitas ser mayor de edad", Toast.LENGTH_LONG)
+                    }
+                } else {
+                    Toast.makeText(this@PantallaRegistro, "Escriba bien la contraseña", Toast.LENGTH_LONG)
                 }
-            }else{
-                Toast.makeText(this,"Escriba bien la contraseña",Toast.LENGTH_LONG)
+
+
+            } else {
+                Toast.makeText(
+                    this@PantallaRegistro,
+                    "la contraseña debe de tener6 o mas caracteres",
+                    Toast.LENGTH_LONG
+                )
             }
 
-
-
         }
-
-
     }
 
     private fun vistaLogin() {

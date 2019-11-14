@@ -12,7 +12,7 @@ class PantallaCompraConTarjeta : AppCompatActivity() {
         setContentView(R.layout.activity_pantalla_compra_con_tarjeta)
 
         botonConfirmarCompra.setOnClickListener {
-            val intConfirmarCompra = Intent(this,PantallaPrincipalNovedades::class.java)
+            val intConfirmarCompra = Intent(this, PantallaPrincipalNovedades::class.java)
             startActivity(intConfirmarCompra)
         }
 

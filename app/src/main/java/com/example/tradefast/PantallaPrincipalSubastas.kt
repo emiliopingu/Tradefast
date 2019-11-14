@@ -41,7 +41,7 @@ class PantallaPrincipalSubastas : AppCompatActivity() {
             startActivity(imagen1 ) }
 
         botonSubastasPrincipal.setOnClickListener {
-            val intNovedades = Intent(this,PantallaPrincipalNovedades::class.java)
+            val intNovedades = Intent(this, PantallaPrincipalNovedades::class.java)
             startActivity(intNovedades)
         }
     }

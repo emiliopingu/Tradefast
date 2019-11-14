@@ -9,8 +9,8 @@
 
     <ProgressBar
             style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="10dp"
+            android:layout_height="17dp"
             android:id="@+id/progressBar2" app:layout_constraintEnd_toEndOf="parent"
             android:indeterminate="true"
             android:visibility="gone"
@@ -26,10 +26,11 @@
             android:ems="10"
             android:id="@+id/RegistroNombre" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="36dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.39"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.0" android:backgroundTint="@android:color/holo_orange_dark"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
+            android:backgroundTint="@android:color/holo_orange_dark" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/regsitroApellido" app:layout_constraintVertical_bias="0.72"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,22 +38,22 @@
             android:ems="10"
             android:id="@+id/RegistroContraseña" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="464dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.39"
-            android:hint="Contraseña" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.99" android:backgroundTint="@android:color/holo_orange_dark"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
+            android:hint="Contraseña"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:layout_marginTop="36dp" app:layout_constraintTop_toBottomOf="@+id/regsitroApellido"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/RegistroContraseña2"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="368dp"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.39"
-            android:hint="Vuelva a escribir la contraseña" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.99"
-            android:backgroundTint="@android:color/holo_orange_dark"/>
+            android:hint="Vuelva a escribir la contraseña"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:layout_marginTop="28dp" app:layout_constraintTop_toBottomOf="@+id/RegistroContraseña"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,10 +61,11 @@
             android:ems="10"
             android:id="@+id/regsitroApellido" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="564dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.39"
-            android:hint="Apellido" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" android:backgroundTint="@android:color/holo_orange_dark"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
+            android:hint="Apellido" android:layout_marginTop="136dp" app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@android:color/holo_orange_dark"
+    />
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,33 +73,45 @@
             android:ems="10"
             android:id="@+id/registroEdad" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="176dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.39"
-            android:hint="Edad" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.996" android:textColor="@android:color/holo_orange_dark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
+            android:hint="Edad"
+            android:textColor="@android:color/holo_orange_dark"
             android:drawableTint="@android:color/holo_orange_dark"
-            android:backgroundTint="@android:color/holo_orange_dark"/>
+            android:backgroundTint="@android:color/holo_orange_dark" android:layout_marginTop="28dp"
+            app:layout_constraintTop_toBottomOf="@+id/registroCorreoElectronico"/>
     <Button
             android:text="Registrarse"
-            android:layout_width="133dp"
-            android:layout_height="102dp"
-            android:id="@+id/botonDeRegsitro1" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
-            app:layout_constraintHorizontal_bias="0.438" android:background="@android:color/holo_orange_dark"
+            android:layout_width="257dp"
+            android:layout_height="73dp"
+            android:id="@+id/botonDeRegsitro1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintHorizontal_bias="0.431"
+            android:background="@drawable/botones"
+            android:textColor="@drawable/texto_botones"
+            android:onClick="botonDeRegsitro1"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.957"
-            android:textColor="@android:color/background_light" android:onClick="botonDeRegsitro1"/>
+            app:layout_constraintTop_toBottomOf="@+id/registroEdad"
+            app:layout_constraintVertical_bias="0.209"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/registroCorreoElectronico"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintTop_toTopOf="@+id/RegistroNombre" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.39"
-            app:layout_constraintVertical_bias="0.585" android:textAlignment="center"
-            android:backgroundTint="@android:color/holo_orange_dark" android:hint="Introduzca el correo"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintHorizontal_bias="0.39"
+            android:textAlignment="center"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:hint="Introduzca el correo"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/RegistroContraseña2"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

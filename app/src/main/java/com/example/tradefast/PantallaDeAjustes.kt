@@ -12,7 +12,7 @@ class PantallaDeAjustes : AppCompatActivity() {
         setContentView(R.layout.activity_pantalla_de_ajustes)
 
         botonConfirmarAjustesVolumen.setOnClickListener {
-            val intVolumnen= Intent(this, PantallaPrincipalNovedades::class.java)
+            val intVolumnen = Intent(this, PantallaPrincipalNovedades::class.java)
             startActivity(intVolumnen)
         }
     }

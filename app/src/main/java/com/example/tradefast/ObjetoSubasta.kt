@@ -9,10 +9,10 @@ class ObjetoSubasta(nombre:String,pujaInicial:Double,pujaFinal:Double,usuario:St
     var foto:Int=0
 
     init {
-        this.nombre=nombre
-        this.pujaInicial=pujaInicial
-        this.pujaFinal=pujaFinal
-        this.usuario=usuario
-        this.foto=foto
+        this.nombre = nombre
+        this.pujaInicial = pujaInicial
+        this.pujaFinal = pujaFinal
+        this.usuario = usuario
+        this.foto = foto
     }
 }

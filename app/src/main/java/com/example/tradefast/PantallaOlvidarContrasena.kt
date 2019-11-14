@@ -21,7 +21,7 @@ class PantallaOlvidarContrasena : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
     }
 
-    fun enviarCorreo(view:View) {
+    fun enviarCorreo(view: View) {
         val correo = reCorreo.text.toString()
 
         if (!TextUtils.isEmpty(correo)) {
