@@ -14,42 +14,22 @@
             android:id="@+id/imageView3"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.078" android:layout_marginBottom="488dp"
+            app:layout_constraintHorizontal_bias="0.457" android:layout_marginBottom="488dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@mipmap/ic_launcher"/>
-    <TextView
-            android:text="CambiarImagen"
-            android:layout_width="wrap_content"
-            android:layout_height="64dp"
-            android:id="@+id/textView" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="36dp"
-            app:layout_constraintHorizontal_bias="0.075" android:textAlignment="center" android:textSize="16sp"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/etCambioNombre" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="4dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="132dp"
+            android:layout_marginEnd="4dp" android:layout_marginTop="8dp"
             android:hint="cambiarnombre" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.042"
-            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintHorizontal_bias="0.923" android:backgroundTint="@android:color/holo_orange_dark"
-            android:textAlignment="center"/>
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/etCambioContraseña" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="324dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:hint="Vuelve a escribir la contraseña" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.892"
-            android:backgroundTint="@android:color/holo_orange_dark" android:textAlignment="center"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.062"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.489" android:backgroundTint="@android:color/holo_orange_dark"
+            android:textAlignment="center" app:layout_constraintTop_toBottomOf="@+id/imageView3"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,13 +44,35 @@
             android:backgroundTint="@android:color/holo_orange_dark" android:textAlignment="center"/>
     <Button
             android:text="Confirmar"
-            android:layout_width="149dp"
-            android:layout_height="70dp"
+            android:layout_width="240dp"
+            android:layout_height="63dp"
             android:id="@+id/botonConfirmarAjustePerfil" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="72dp"
-            android:background="@android:color/holo_orange_dark" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/etCambioContraseña" app:layout_constraintVertical_bias="0.931"
-            android:textAlignment="center" android:textColor="@color/common_google_signin_btn_text_dark_default"/>
+            android:background="@drawable/botones"
+            android:textColor="@drawable/texto_botones"
+            android:textAlignment="center" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/etCambioDePaypal" android:onClick="botonCambiar"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/cambiarCorreo" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="52dp"
+            app:layout_constraintTop_toBottomOf="@+id/etCambioNombre"
+            android:backgroundTint="@android:color/holo_orange_dark" android:hint="cambiar correo"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/cambiarContrasena" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/cambiarCorreo" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/etCambioDePaypal" android:textAlignment="center"
+            android:hint="cambiarContrasena" android:backgroundTint="@android:color/holo_orange_dark"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

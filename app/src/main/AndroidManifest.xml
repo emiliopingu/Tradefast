@@ -15,6 +15,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".RealizarCompra">
+        </activity>
+        <activity android:name=".compraNovedades">
+        </activity>
         <activity android:name=".EditarPerfil">
         </activity>
         <activity
