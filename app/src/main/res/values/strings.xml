@@ -1,7 +1,59 @@
 <resources>
+
     <string name="app_name">TradeFast</string>
+
     <string name="action_settings">Settings</string>
+
     <string name="botonRegistroInicio">Registrarse</string>
+
     <string name="botonIniciosecion">Iniciar sesión</string>
+
     <string name="title_activity_maps">Map</string>
+
+    <string name="ComprarArticulo">Comprar artículo</string>
+
+    <string name="ContrasenaOlvidada">¿Has olvidadod la contraseña?</string>
+
+    <string name="botonFinalComprar">Pagar</string>
+
+    <string name="botonFinalCancelarCompra">Cancelar</string>
+
+    <string name="loginCorreoHint">Escriba su correo</string>
+
+    <string name="loginContrasenaHint">Escriba su contraseña</string>
+
+    <string name="pagoConPaypal2">¿Deseas que tu pago por Paypal sea confirmado?</string>
+
+    <string name="VolumenGeneral">Volumen General de la aplicación</string>
+
+    <string name="VolumenSubasta">Volumen de la notficación de las subastas</string>
+
+    <string name="botonConfirmarAjustes">Confirmar</string>
+
+    <string name="textContOlvidada">Escriba aquí su correo</string>
+
+    <string name="bContOlvidada">Aceptar</string>
+
+    <string name="personalizarPnombre">Cambiar nombre</string>
+
+    <string name="personalizarPcorreo">Cambiar Correo</string>
+
+    <string name="personalizarPcontrasena">Cambiar contraseña</string>
+
+    <string name="personalizarPpaypal">Cambiar Paypal</string>
+
+    <string name="registrarNombre">Confirmar</string>
+
+    <string name="registrarApellido">Confirmar</string>
+
+    <string name="registrarContrasena1">Confirmar</string>
+
+    <string name="registrarContrasena2">Confirmar</string>
+
+    <string name="registrarCorreo">Confirmar</string>
+
+
+    <string name="botonVender1">Vender Artículo</string>
+
+
 </resources>

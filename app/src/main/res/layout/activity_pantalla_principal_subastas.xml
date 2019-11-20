@@ -22,16 +22,18 @@
                 android:id="@+id/botonSubastasPrincipal"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="0dp"
-                android:background="@android:color/holo_orange_dark"
-                android:textColor="@android:color/background_light"/>
+                android:background="@drawable/botones"
+                android:textColor="@drawable/texto_botones"/>
         <Button
                 android:text="Novedades"
-                android:layout_width="163dp"
+                android:layout_width="154dp"
                 android:layout_height="match_parent"
                 android:id="@+id/botonNovedadesPrincipal"
                 android:layout_marginBottom="0dp"
-                android:background="@android:color/holo_orange_dark" android:layout_marginStart="0dp"
-                android:textColor="@color/common_google_signin_btn_text_dark_default"/>
+                android:background="@drawable/botones"
+                android:textColor="@drawable/texto_botones"
+                android:layout_marginStart="0dp"
+        />
     </LinearLayout>
     <ImageView
             android:layout_width="100dp"

@@ -11,7 +11,7 @@
     <ImageView
             android:layout_width="102dp"
             android:layout_height="130dp"
-            android:id="@+id/imageView3"
+            android:id="@+id/imagenPerfil"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="0.457" android:layout_marginBottom="488dp"
@@ -25,11 +25,11 @@
             android:ems="10"
             android:id="@+id/etCambioNombre" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="4dp" android:layout_marginTop="8dp"
-            android:hint="cambiarnombre" android:layout_marginBottom="8dp"
+            android:hint="@string/personalizarPnombre" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.062"
             android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.489" android:backgroundTint="@android:color/holo_orange_dark"
-            android:textAlignment="center" app:layout_constraintTop_toBottomOf="@+id/imageView3"/>
+            android:textAlignment="center" app:layout_constraintTop_toBottomOf="@+id/imagenPerfil"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,11 +39,10 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="236dp"
-            android:hint="cambiar pago con Paypal" android:layout_marginTop="8dp"
+            android:hint="@string/personalizarPpaypal" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="1.0"
             android:backgroundTint="@android:color/holo_orange_dark" android:textAlignment="center"/>
     <Button
-            android:text="Confirmar"
             android:layout_width="240dp"
             android:layout_height="63dp"
             android:id="@+id/botonConfirmarAjustePerfil" app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +62,7 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="52dp"
             app:layout_constraintTop_toBottomOf="@+id/etCambioNombre"
-            android:backgroundTint="@android:color/holo_orange_dark" android:hint="cambiar correo"/>
+            android:backgroundTint="@android:color/holo_orange_dark" android:hint="@string/personalizarPcorreo"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,7 +71,7 @@
             android:id="@+id/cambiarContrasena" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/cambiarCorreo" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/etCambioDePaypal" android:textAlignment="center"
-            android:hint="cambiarContrasena" android:backgroundTint="@android:color/holo_orange_dark"
+            android:hint="@string/personalizarPcontrasena" android:backgroundTint="@android:color/holo_orange_dark"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

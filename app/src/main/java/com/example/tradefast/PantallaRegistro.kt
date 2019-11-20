@@ -31,9 +31,11 @@ class PantallaRegistro : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_registro)
+
 
         RegistroNombre = findViewById(R.id.RegistroNombre)
         regsitroApellido = findViewById(R.id.regsitroApellido)
@@ -82,6 +84,10 @@ class PantallaRegistro : AppCompatActivity() {
                                 val datosUsuario = ObjetoUsuario(id, nombre, apellido, contrasena, correo, edad)
                                 if (id != null) {
                                     dbreference.child("Usuario").child(id).setValue(datosUsuario)
+                                    val IDparaVenta = Intent(this,VenderObjetos::class.java)
+                                    intent.putExtra("idUsuarioVender", id)
+                                    setResult(1,IDparaVenta)
+
 
                                 }
 

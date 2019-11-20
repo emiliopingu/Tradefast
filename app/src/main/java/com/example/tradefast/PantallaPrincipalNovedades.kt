@@ -63,6 +63,11 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
             val intSubastas = Intent(this, PantallaPrincipalSubastas::class.java)
             startActivity(intSubastas)
         }
+
+        bVender1.setOnClickListener {
+            val venderPantalla =Intent( this@PantallaPrincipalNovedades,VenderObjetos::class.java)
+            startActivity(venderPantalla)
+        }
     }
 
 }
