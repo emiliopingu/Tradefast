@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_pantalla_principal_novedades.*
 
 class PantallaPrincipalNovedades : AppCompatActivity() {
@@ -17,7 +19,10 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
 
     var novedades: ArrayList<ObjetoNovedad>? = null
     var layoutManager: RecyclerView.LayoutManager? = null
+
+
     var adaptador: AdapterNovedades? = null
+    var data: FirebaseDatabase? = null
     var lista: RecyclerView? = null
 
 
@@ -28,10 +33,32 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
         setContentView(R.layout.activity_pantalla_principal_novedades)
 
         val user = intent.getStringExtra("user")
-
         txNombreUsuarioSubastas.text = user
 
+        data = FirebaseDatabase.getInstance()
+        lista = findViewById(R.id.recycleViewNovedades)
+
+
+
         novedades = ArrayList()
+
+        var ref= data!!.getReference("ArticulosDeVenta")
+        ref?.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0!!.exists()){
+                    for(x in p0.children){
+                        novedades!!.removeAll(novedades!!)
+                        val articulo=x.getValue(ObjetoNovedad::class.java)
+                        novedades?.add(articulo!!)
+                    }
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO(reason = "not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+        })
 
 
         novedades?.add(
@@ -65,9 +92,10 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
         }
 
         bVender1.setOnClickListener {
-            val venderPantalla =Intent( this@PantallaPrincipalNovedades,VenderObjetos::class.java)
+            val venderPantalla = Intent(this@PantallaPrincipalNovedades, VenderObjetos::class.java)
             startActivity(venderPantalla)
         }
     }
+
 
 }

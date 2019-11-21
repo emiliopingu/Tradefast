@@ -81,7 +81,7 @@ class PantallaRegistro : AppCompatActivity() {
                         auth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
                                 val id: String? = dbreference.push().key
-                                val datosUsuario = ObjetoUsuario(id, nombre, apellido, contrasena, correo, edad)
+                                val datosUsuario = ObjetoUsuario(id, nombre, apellido, contrasena, correo, edad,0)
                                 if (id != null) {
                                     dbreference.child("Usuario").child(id).setValue(datosUsuario)
                                     val IDparaVenta = Intent(this,VenderObjetos::class.java)

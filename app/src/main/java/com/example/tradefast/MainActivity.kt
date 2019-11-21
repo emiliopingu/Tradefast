@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         if (!TextUtils.isEmpty(usuario) && !TextUtils.isEmpty(contrasenaInicio)) {
             if (contrasenaInicio.length < 6) {
-                progressBar2.visibility = View.VISIBLE
+
                 auth.signInWithEmailAndPassword(usuario, contrasenaInicio)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {

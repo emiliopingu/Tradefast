@@ -24,7 +24,7 @@ class CompraNovedades : AppCompatActivity() {
 
 
         comprarAticuloNovedades.setOnClickListener {
-            val comprar = Intent(this, RealizarCompra::class.java)
+            val comprar = Intent(this, CompraNovedades::class.java)
             intent.putExtra("precioCompra",precioCompra)
             startActivity(comprar)
         }

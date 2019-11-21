@@ -50,9 +50,9 @@ class VenderObjetos : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
-        val intent = Intent(this, MainActivity::class.java)
+      //  val intent = Intent(this, MainActivity::class.java)
 
-        dbreference = database.reference
+        dbreference = database.getReference("User")
 
 
         val precio: String = precioDeVenta.text.toString()
