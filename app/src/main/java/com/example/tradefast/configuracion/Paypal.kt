@@ -1,4 +1,4 @@
-package configuracion
+package com.example.tradefast.configuracion
 
 class Paypal(){
 

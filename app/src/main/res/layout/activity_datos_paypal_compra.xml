@@ -8,7 +8,7 @@
         tools:context=".DatosPaypalCompra">
 
     <TextView
-            android:text="TextView"
+            android:text="paymentId"
             android:layout_width="291dp"
             android:layout_height="58dp"
             android:id="@+id/paymentId" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
@@ -16,7 +16,7 @@
             app:layout_constraintBottom_toTopOf="@+id/Status" android:layout_marginBottom="144dp"
             android:textAlignment="center" android:textSize="18sp"/>
     <TextView
-            android:text="TextView"
+            android:text="Status"
             android:layout_width="286dp"
             android:layout_height="51dp"
             android:id="@+id/Status" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
@@ -24,7 +24,7 @@
             android:layout_marginBottom="100dp" app:layout_constraintBottom_toTopOf="@+id/Amount"
             android:textSize="18sp" android:textAlignment="center"/>
     <TextView
-            android:text="TextView"
+            android:text="Amount"
             android:layout_width="296dp"
             android:layout_height="57dp"
             android:id="@+id/Amount" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"

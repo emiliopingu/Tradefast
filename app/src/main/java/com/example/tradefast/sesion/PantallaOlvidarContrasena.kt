@@ -1,4 +1,4 @@
-package com.example.tradefast
+package com.example.tradefast.sesion
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import com.example.tradefast.R
 import com.google.firebase.auth.FirebaseAuth
 
 class PantallaOlvidarContrasena : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.tradefast
+package com.example.tradefast.sesion
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.example.tradefast.R
+import com.example.tradefast.VenderObjetos
 
 
 import com.google.firebase.auth.FirebaseAuth
@@ -15,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
+import com.example.tradefast.objetos.ObjetoUsuario
 
 
 class PantallaRegistro : AppCompatActivity() {
@@ -69,35 +72,34 @@ class PantallaRegistro : AppCompatActivity() {
         if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(apellido) && !TextUtils.isEmpty(contrasena) &&
             !TextUtils.isEmpty(contrasena2) && !TextUtils.isEmpty(correo) && !TextUtils.isEmpty(edad)
         ) {
-            if (contrasena.length < 6 && contrasena2.length < 6) {
+            if (contrasena.length <= 6 && contrasena2.length <= 6) {
 
                 if (contrasena == contrasena2) {
 
                     if (edad != "0" || edad != "1" || edad != "2" || edad != "3" || edad != "4" || edad != "5" || edad != "6" || edad != "7" || edad != "8" ||
                         edad != "9" || edad != "10" || edad != "11" || edad == "12" || edad != "13" || edad != "14" || edad != "15" || edad != "16" || edad != "17"
                     ) {
-                        progressBarLogin.visibility = View.VISIBLE
 
                         auth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
                                 val id: String? = dbreference.push().key
-                                val datosUsuario = ObjetoUsuario(id, nombre, apellido, contrasena, correo, edad,0)
+                                val datosUsuario =
+                                    ObjetoUsuario(id, nombre, apellido, contrasena, correo, edad, 0,null)
                                 if (id != null) {
                                     dbreference.child("Usuario").child(id).setValue(datosUsuario)
-                                    val IDparaVenta = Intent(this,VenderObjetos::class.java)
+                                    val IDparaVenta = Intent(this, VenderObjetos::class.java)
                                     intent.putExtra("idUsuarioVender", id)
                                     setResult(1,IDparaVenta)
 
-
                                 }
-
+                                vistaLogin()
                             } else {
                                 if (task.exception is FirebaseAuthUserCollisionException) {
                                     Toast.makeText(this@PantallaRegistro, "Esta cuenta ya existe", Toast.LENGTH_LONG)
                                 }
                             }
                         }
-                        vistaLogin()
+
 
                     } else {
                         Toast.makeText(this@PantallaRegistro, "Necesitas ser mayor de edad", Toast.LENGTH_LONG)

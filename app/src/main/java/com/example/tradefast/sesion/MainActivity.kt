@@ -1,22 +1,19 @@
-package com.example.tradefast
+package com.example.tradefast.sesion
 
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.example.tradefast.PantallaPrincipalNovedades
+import com.example.tradefast.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.FirebaseUser
 
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_pantalla_registro.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         val contrasenaInicio: String = contraseñaInicio.text.toString()
 
         if (!TextUtils.isEmpty(usuario) && !TextUtils.isEmpty(contrasenaInicio)) {
-            if (contrasenaInicio.length < 6) {
+            if (contrasenaInicio.length >= 6) {
 
                 auth.signInWithEmailAndPassword(usuario, contrasenaInicio)
                     .addOnCompleteListener(this) { task ->

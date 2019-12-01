@@ -1,4 +1,4 @@
-package com.example.tradefast
+package com.example.tradefast.objetos
 
 class ObjetoSubasta(nombre:String,pujaInicial:Double,pujaFinal:Double,usuario:String,foto:Int) {
 

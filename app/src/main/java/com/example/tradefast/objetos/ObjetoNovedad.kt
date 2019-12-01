@@ -1,4 +1,4 @@
-package com.example.tradefast
+package com.example.tradefast.objetos
 
 class ObjetoNovedad(nombre: String, precio: Double, descripcion: String, usuario: String, foto: Int) {
 

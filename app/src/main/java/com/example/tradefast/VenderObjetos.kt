@@ -1,7 +1,6 @@
 package com.example.tradefast
 
 import android.app.Activity
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -12,11 +11,10 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
-import com.google.firebase.FirebaseError
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
+import com.example.tradefast.objetos.ObjetoNovedad
 
 
 class VenderObjetos : AppCompatActivity() {

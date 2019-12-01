@@ -27,7 +27,7 @@ class DatosPaypalCompra : AppCompatActivity() {
 
     @Throws(JSONException::class)
     private fun showDetails(jsonDetails: JSONObject, paymentAmount: String) {
-        //Views
+
         val id = findViewById<View>(R.id.paymentId) as TextView
         val status = findViewById<View>(R.id.Status) as TextView
         val amount = findViewById<View>(R.id.Amount) as TextView

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tradefast.ObjetoSubasta
+import com.example.tradefast.objetos.ObjetoSubasta
 import com.example.tradefast.R
 import kotlinx.android.synthetic.main.activity_pantalla_info_subastas.view.*
 

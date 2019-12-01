@@ -21,21 +21,21 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/aNombreVender" android:textAlignment="center" android:layout_marginTop="60dp"
-                android:backgroundTint="@android:color/holo_orange_dark"/>
+                android:backgroundTint="@android:color/holo_orange_dark" android:hint="nombre Artículo"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/aPrecioVender" android:textAlignment="center" android:layout_marginTop="40dp"
-                android:backgroundTint="@android:color/holo_orange_dark"/>
+                android:backgroundTint="@android:color/holo_orange_dark" android:hint="precio"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/aDescripVender" android:textAlignment="center" android:layout_marginTop="40dp"
-                android:backgroundTint="@android:color/holo_orange_dark"/>
+                android:backgroundTint="@android:color/holo_orange_dark" android:hint="descripción"/>
         <Button
                 android:text="Button"
                 android:layout_width="match_parent"

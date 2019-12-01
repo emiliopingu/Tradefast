@@ -5,14 +5,16 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.appcompat.view.menu.ActionMenuItemView
-import androidx.recyclerview.widget.DividerItemDecoration
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
+import android.widget.Button
+import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_pantalla_principal_novedades.*
+import com.example.tradefast.objetos.ObjetoNovedad
 
 class PantallaPrincipalNovedades : AppCompatActivity() {
 
@@ -24,6 +26,7 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
     var adaptador: AdapterNovedades? = null
     var data: FirebaseDatabase? = null
     var lista: RecyclerView? = null
+    private lateinit var buscadorSubastas: EditText
 
 
     @SuppressLint("SetTextI18n")
@@ -37,25 +40,38 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
 
         data = FirebaseDatabase.getInstance()
         lista = findViewById(R.id.recycleViewNovedades)
+        buscadorSubastas = findViewById(R.id.buscadorSubastas)
 
+        buscadorSubastas.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
+            }
 
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                filtrar(s.toString())
+            }
+
+        })
         novedades = ArrayList()
 
-        var ref= data!!.getReference("ArticulosDeVenta")
-        ref?.addValueEventListener(object : ValueEventListener{
+        var ref = data!!.getReference("ArticulosDeVenta")
+        ref?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
-                if(p0!!.exists()){
-                    for(x in p0.children){
+                if (p0!!.exists()) {
+                    for (x in p0.children) {
                         novedades!!.removeAll(novedades!!)
-                        val articulo=x.getValue(ObjetoNovedad::class.java)
+                        val articulo = x.getValue(ObjetoNovedad::class.java)
                         novedades?.add(articulo!!)
                     }
                 }
             }
 
             override fun onCancelled(p0: DatabaseError) {
-                TODO(reason = "not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.e("errorRecycleView", "error al cargar el recycleView")
             }
 
         })
@@ -97,5 +113,15 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
         }
     }
 
+    private fun filtrar(texto:String) {
+        var filtrarLista:ArrayList<ObjetoNovedad> = ArrayList()
 
+
+        for (n in this!!.novedades!!) {
+            if (n.nombre.toLowerCase().contains(texto.toLowerCase())) {
+                filtrarLista.add(n)
+            }
+        }
+        adaptador?.filtrarLista(filtrarLista)
+    }
 }

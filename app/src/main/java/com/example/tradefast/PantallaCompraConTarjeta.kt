@@ -34,17 +34,17 @@ class PantallaCompraConTarjeta : AppCompatActivity() {
         startService(i)
 
 
-        //Creating a paypalpayment
+
         val payment = PayPalPayment(
             BigDecimal((paymentAmount.toString())), "USD", "Simplified Coding Fee",
             PayPalPayment.PAYMENT_INTENT_SALE
         )
 
-        //Creating Paypal Payment activity intent
+
         val intent = Intent(this, PaymentActivity::class.java)
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config)
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment)
-        startActivityForResult(intent, REQUEST_CODE_PAYMENT)
+        startActivityForResult(intent,4/* REQUEST_CODE_PAYMENT*/)
 
 
 
@@ -64,8 +64,8 @@ class PantallaCompraConTarjeta : AppCompatActivity() {
         super.onDestroy()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_CODE_PAYMENT) {
+ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == 1/*REQUEST_CODE_PAYMENT*/) {
 
             if (resultCode == Activity.RESULT_OK) {
 

@@ -16,9 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_pantalla_personalizar_perfil.*
-
-
+import com.example.tradefast.objetos.ObjetoUsuario
 
 
 class PantallaPersonalizarPerfil : AppCompatActivity() {
@@ -30,7 +28,7 @@ class PantallaPersonalizarPerfil : AppCompatActivity() {
     private lateinit var cambiarCorreo: EditText
     private lateinit var cambiarContrasena: EditText
     private lateinit var mFirebaseUser: FirebaseUser
-    private lateinit var usuario:ObjetoUsuario
+    private lateinit var usuario: ObjetoUsuario
     private lateinit var imagenPerfil:ImageView
 
 
