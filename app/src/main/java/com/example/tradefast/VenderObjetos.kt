@@ -48,7 +48,7 @@ class VenderObjetos : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
-      //  val intent = Intent(this, MainActivity::class.java)
+      //  val intent = Intent(this, Login::class.java)
 
         dbreference = database.getReference("User")
 

@@ -29,7 +29,7 @@ class PantallaOlvidarContrasena : AppCompatActivity() {
             auth.sendPasswordResetEmail(correo)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        val mandarLogin = Intent(this, MainActivity::class.java)
+                        val mandarLogin = Intent(this, Login::class.java)
                         startActivity(mandarLogin)
                     } else {
                         Toast.makeText(this, "Se ha producido un error con el correo", Toast.LENGTH_LONG)

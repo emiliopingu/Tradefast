@@ -16,7 +16,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_main.*
 import com.example.tradefast.objetos.ObjetoUsuario
 
 
@@ -53,6 +52,16 @@ class PantallaRegistro : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         dbreference = database.getReference("User")
+
+        val act = this
+        auth.addAuthStateListener { firebaseAuth ->
+            Toast.makeText(
+                act,
+                firebaseAuth.currentUser!!.email,
+                Toast.LENGTH_LONG
+            ).show()
+        }
+
 
 
     }
@@ -121,7 +130,7 @@ class PantallaRegistro : AppCompatActivity() {
     }
 
     private fun vistaLogin() {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, Login::class.java))
     }
 
 }
