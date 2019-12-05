@@ -33,7 +33,7 @@
             android:layout_marginBottom="284dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:hint="@string/loginCorreoHint" android:backgroundTint="#D8FF8922"
-    />
+            android:textAlignment="center"/>
     <Button
 
             android:layout_width="134dp"

@@ -15,6 +15,8 @@ import android.view.View
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
 import com.example.tradefast.objetos.ObjetoNovedad
+import com.example.tradefast.sesion.Login
+import kotlinx.android.synthetic.main.activity_vender_objetos.*
 
 
 class VenderObjetos : AppCompatActivity() {
@@ -37,40 +39,25 @@ class VenderObjetos : AppCompatActivity() {
         setContentView(R.layout.activity_vender_objetos)
 
         nombreDeVenta = findViewById(R.id.aNombreVender)
+
         precioDeVenta = findViewById(R.id.aPrecioVender)
+
         descripcionDeVenta = findViewById(R.id.aDescripVender)
+
         imagenDeVenta = findViewById(R.id.imagenVenta)
+
         imagenDeVenta.setOnClickListener {
             cargarImagen()
         }
 
         barraProgreso = ProgressBar(this)
-
         database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
-      //  val intent = Intent(this, Login::class.java)
 
         dbreference = database.getReference("User")
 
-
-        val precio: String = precioDeVenta.text.toString()
-        var precioEnDouble = precio.toDouble()
-        if (!TextUtils.isEmpty(nombreDeVenta.text) && !TextUtils.isEmpty(precioDeVenta.text) &&
-            !TextUtils.isEmpty(descripcionDeVenta.text)
-        ) {
-            progressBarLogin.visibility = View.VISIBLE
-            val id: String? = dbreference.push().key
-            val objeto = ObjetoNovedad(
-                nombreDeVenta.text.toString(),
-                precioEnDouble,
-                descripcionDeVenta.text.toString(),
-                "",
-                imagenDeVenta.id
-            )
-            if (id != null) {
-                dbreference.child("ArticulosEnVentas").child(id).setValue(objeto)
-            }
-
+        aceptarVenta.setOnClickListener {
+            crearArticulo()
         }
 
 
@@ -83,12 +70,38 @@ class VenderObjetos : AppCompatActivity() {
         startActivityForResult(Intent.createChooser(i, "Escoja una imagen "), 10)
 
     }
-     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-      if(resultCode== Activity.RESULT_OK){
-          val path: Uri = data!!.data
-          imagenDeVenta.setImageURI(path)
 
-      }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK) {
+            val path: Uri = data!!.data
+            imagenDeVenta.setImageURI(path)
+
+        }
+    }
+
+    private fun vistaNovedades() {
+        startActivity(Intent(this, Login::class.java))
+    }
+
+    private fun crearArticulo() {
+        val precio: String = precioDeVenta.text.toString()
+        if (!TextUtils.isEmpty(nombreDeVenta.text) && !TextUtils.isEmpty(precioDeVenta.text) &&
+            !TextUtils.isEmpty(descripcionDeVenta.text)
+        ) {
+            var preciod = java.lang.Double.parseDouble(precio)
+            val id: String? = dbreference.push().key
+            val objeto = ObjetoNovedad(
+                nombreDeVenta.text.toString(),
+                preciod,
+                descripcionDeVenta.text.toString(),
+                "",
+                imagenDeVenta.id
+            )
+            if (id != null) {
+                dbreference.child("ArticulosEnVentas").child(id).setValue(objeto)
+            }
+            vistaNovedades()
+        }
     }
 }
 

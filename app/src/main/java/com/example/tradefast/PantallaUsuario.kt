@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_pantalla_principal_novedades.*
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import kotlinx.android.synthetic.main.activity_pantalla_usuario.*
 
 class PantallaUsuario : AppCompatActivity() {
@@ -14,15 +14,48 @@ class PantallaUsuario : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_usuario)
-
-        var nombreUsuario = intent.getStringExtra("nombrePerfil")
+        val nombreUsuario = intent.getStringExtra("nombrePerfil")
         nombreInfoUsuario.text ="Nombre del usuario $nombreUsuario"
-        var c=intent.getStringExtra("contraPerfil")
+
+        val correo=intent.getStringExtra("correoPerfil")
+        correPerfil.text=correo
 
         editarPerfil.setOnClickListener {
-            val edit = Intent(this, PantallaPersonalizarPerfil::class.java)
-            startActivity(edit)
+            infoEditarPerfil()
         }
     }
+
+    private fun infoEditarPerfil() {
+        val contra=intent.getStringExtra("contraPerfil")
+        auth.signInWithEmailAndPassword(correPerfil.text.toString(), contra)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    vistaNovedades(correPerfil.text.toString(), contra)
+                } else {
+                    if (task.exception is FirebaseAuthUserCollisionException) {
+                        Toast.makeText(
+                            this,
+                            "Error de autentificación vuelve a escribir los datos",
+                            Toast.LENGTH_LONG
+                        )
+                    }
+
+
+                }
+            }
+
+    }
+
+
+    private fun vistaNovedades(correo: String, contra: String) {
+        val pos: Int = correo.indexOf("@")
+        val user: String = correo.substring(0, pos)
+        val intent = Intent(this, PantallaPersonalizarPerfil::class.java)
+        intent.putExtra("nombrePerfilEditar", user)
+        intent.putExtra("contraPerfilEditar", contra)
+        intent.putExtra("correoPerfilEditar",correo)
+        startActivity(intent)
+    }
+
 }
 

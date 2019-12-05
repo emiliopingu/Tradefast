@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tradefast.CompraNovedades
 import com.example.tradefast.objetos.ObjetoNovedad
 import com.example.tradefast.R
+import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_pantalla_info_novedades.view.*
 
 
@@ -18,7 +20,7 @@ class AdapterNovedades(private val context: Context, items: ArrayList<ObjetoNove
     RecyclerView.Adapter<AdapterNovedades.ViewHolder>() {
 
     var items: ArrayList<ObjetoNovedad>? = null
-    var nombreNovedad:ArrayList<ObjetoNovedad>?=null
+    var nombreNovedad: ArrayList<ObjetoNovedad>? = null
 
     init {
         this.items = items
@@ -40,6 +42,8 @@ class AdapterNovedades(private val context: Context, items: ArrayList<ObjetoNove
         val usuario = item?.usuario
         val foto = item?.foto
         val desp = item?.descripcion
+
+
 
 
         holder.nombrePrecio?.text = "Nombre del objeto: $nombre \n Precio: $precio"
@@ -85,7 +89,7 @@ class AdapterNovedades(private val context: Context, items: ArrayList<ObjetoNove
     }
 
     fun filtrarLista(filtarItem: ArrayList<ObjetoNovedad>) {
-        this.nombreNovedad=filtarItem
+        this.nombreNovedad = filtarItem
         notifyDataSetChanged()
     }
 }

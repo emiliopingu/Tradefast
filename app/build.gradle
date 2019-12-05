@@ -34,6 +34,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.google.firebase:firebase-database:19.2.0'
     implementation 'com.firebaseui:firebase-ui-database:2.3.0'
+    implementation 'com.firebaseui:firebase-ui-storage:4.3.1'
 
     implementation 'com.paypal.sdk:paypal-android-sdk:2.14.2'
 }

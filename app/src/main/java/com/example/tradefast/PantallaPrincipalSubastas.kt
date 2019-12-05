@@ -4,10 +4,14 @@ import Adapter.AdaptadorSubastas
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_pantalla_principal_novedades.*
+
 import com.example.tradefast.objetos.ObjetoSubasta
+import kotlinx.android.synthetic.main.activity_pantalla_principal_subastas.*
+
 
 class PantallaPrincipalSubastas : AppCompatActivity() {
 
@@ -16,9 +20,16 @@ class PantallaPrincipalSubastas : AppCompatActivity() {
     var adaptador: AdaptadorSubastas?=null
     var lista: RecyclerView?=null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_principal_subastas)
+
+        val nombre = intent.getStringExtra("nombreSubasta")
+        val contra = intent.getStringExtra("contraSubasta")
+        val correo = intent.getStringExtra("corroSubasta")
+
+        subastaNombre.text=nombre
 
        subastas = ArrayList()
 
@@ -43,11 +54,11 @@ class PantallaPrincipalSubastas : AppCompatActivity() {
         lista?.adapter=adaptador
 
 
-        imagenUsuario1.setOnClickListener {
+        imagenUsuario2.setOnClickListener {
             val imagen1 = Intent(this,PantallaUsuario::class.java)
             startActivity(imagen1 ) }
 
-        botonSubastasPrincipal.setOnClickListener {
+        botonNovedadesSecundario.setOnClickListener {
             val intNovedades = Intent(this, PantallaPrincipalNovedades::class.java)
             startActivity(intNovedades)
         }

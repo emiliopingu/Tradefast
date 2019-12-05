@@ -10,14 +10,14 @@
 
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="403dp"
-            android:layout_height="41dp"
+            android:layout_width="397dp"
+            android:layout_height="53dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="184dp" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:id="@+id/linearLayout">
         <Button
                 android:text="subastas"
-                android:layout_width="211dp"
+                android:layout_width="212dp"
                 android:layout_height="match_parent"
                 android:id="@+id/botonSubastasPrincipal"
                 android:layout_marginEnd="0dp"
@@ -26,7 +26,7 @@
                 android:textColor="@drawable/texto_botones"/>
         <Button
                 android:text="Novedades"
-                android:layout_width="217dp"
+                android:layout_width="184dp"
                 android:layout_height="match_parent"
                 android:id="@+id/botonNovedadesPrincipal"
                 android:layout_marginBottom="0dp"
@@ -52,20 +52,20 @@
             android:id="@+id/buscadorSubastas" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.956"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/bVender1"
+            app:layout_constraintHorizontal_bias="0.043"
             android:hint="buscador"
-    />
+            app:layout_constraintBottom_toBottomOf="@+id/bVender1"/>
     <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="386dp"
-            android:layout_height="243dp"
+            android:layout_width="383dp"
+            android:layout_height="134dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.428" app:layout_constraintVertical_bias="0.879"
+            android:layout_marginBottom="40dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             android:id="@+id/recycleViewNovedades"
-            android:background="@color/common_google_signin_btn_text_dark_default"/>
+            android:background="@color/common_google_signin_btn_text_dark_default"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"/>
     <Button
             android:text="@string/botonVender1"
             android:layout_width="127dp"
@@ -77,16 +77,16 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="48dp"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            app:layout_constraintHorizontal_bias="0.029" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/recycleViewNovedades" app:layout_constraintVertical_bias="0.147"/>
+            app:layout_constraintHorizontal_bias="0.988"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" android:layout_marginTop="88dp"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.065"/>
     <TextView
             android:text="TextView"
             android:layout_width="139dp"
             android:layout_height="77dp"
             android:id="@+id/tvNombreUsuarioNovedades" app:layout_constraintStart_toEndOf="@+id/imagenUsuario1"
             android:layout_marginStart="64dp" android:layout_marginTop="20dp"
-            app:layout_constraintTop_toTopOf="@+id/imagenUsuario1" android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="@+id/imagenUsuario1" android:textSize="30sp"
             android:textAlignment="center"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

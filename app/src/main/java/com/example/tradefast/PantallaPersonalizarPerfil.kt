@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -36,7 +37,6 @@ class PantallaPersonalizarPerfil : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_personalizar_perfil)
 
-        cambiarNombre = findViewById(R.id.etCambioNombre)
         cambiarCorreo = findViewById(R.id.cambiarCorreo)
         cambiarContrasena=findViewById(R.id.cambiarContrasena)
         imagenPerfil=findViewById(R.id.imagenPerfil)
@@ -67,23 +67,22 @@ class PantallaPersonalizarPerfil : AppCompatActivity() {
         }
     }
 
-    private fun cambiarCuenta() {
-
-        val nombre:String=cambiarNombre.text.toString()
-        val contrasena:String=cambiarContrasena.text.toString()
-        val correo:String=cambiarCorreo.text.toString()
 
 
 
+   private fun cambiarCuenta() {
+
+      val correo:String=cambiarCorreo.text.toString()
+       val contra:String=cambiarContrasena.text.toString()
 
 
-        var nuevoNombre : HashMap<String, String> = HashMap ()
-        if(!TextUtils.isEmpty(nombre)){
-            nuevoNombre["nombre"] = nombre
-        }
-        if (!TextUtils.isEmpty(contrasena)){
-            nuevoNombre["contrasena"] = contrasena
-            mFirebaseUser.updatePassword(contrasena).addOnCompleteListener(this) {
+
+
+        var nuevosDatos : HashMap<String, String> = HashMap ()
+
+        if (!TextUtils.isEmpty(contra)){
+            nuevosDatos["contrasena"] = contra
+            mFirebaseUser.updatePassword(contra).addOnCompleteListener(this) {
                     task ->
                 if (task.isSuccessful){
                     Toast.makeText(this@PantallaPersonalizarPerfil,"Se ha cambiado el correo adecuadamente",Toast.LENGTH_LONG)
@@ -93,7 +92,7 @@ class PantallaPersonalizarPerfil : AppCompatActivity() {
             }
         }
         if (!TextUtils.isEmpty(correo)){
-            nuevoNombre["correo"] =correo
+            nuevosDatos["correo"] =correo
             mFirebaseUser.updateEmail(correo).addOnCompleteListener(this) {
                     task ->
                 if (task.isSuccessful){
@@ -102,10 +101,13 @@ class PantallaPersonalizarPerfil : AppCompatActivity() {
                     task.exception is FirebaseException
                 }
             }
+            val pos: Int = correo.indexOf("@")
+            val nombre: String = correo.substring(0, pos)
+            nuevosDatos["nombre"] = nombre
 
         }
 
-        dbreference.child(usuario.id).setValue(nuevoNombre)
+        dbreference.child(usuario.id).setValue(nuevosDatos)
 
     }
 }

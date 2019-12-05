@@ -24,12 +24,10 @@
         </activity>
         <activity android:name=".VenderObjetos">
         </activity>
-        <activity android:name=".RealizarCompra">
+
+        <activity android:name=".CompraNovedades">
         </activity>
-        <activity android:name=".compraNovedades">
-        </activity>
-        <activity android:name=".EditarPerfil">
-        </activity>
+
 
         <activity
                 android:name=".configuracion.SplashScreem"

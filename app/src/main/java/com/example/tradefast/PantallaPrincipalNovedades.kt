@@ -1,15 +1,12 @@
 package com.example.tradefast
 
 import Adapter.AdapterNovedades
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
-import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -20,8 +17,11 @@ import kotlinx.android.synthetic.main.activity_pantalla_principal_novedades.*
 import com.example.tradefast.objetos.ObjetoNovedad
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import kotlinx.android.synthetic.main.activity_compra_novedades.*
-import kotlinx.android.synthetic.main.activity_main.*
+
+import com.google.firebase.database.DataSnapshot
+
+
+
 
 class PantallaPrincipalNovedades : AppCompatActivity() {
 
@@ -44,11 +44,15 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
         lista = findViewById(R.id.recycleViewNovedades)
         buscadorSubastas = findViewById(R.id.buscadorSubastas)
         auth = FirebaseAuth.getInstance()
+        rellenarRecycleViex()
 
 
 
 
+        val nombre: String = intent.getStringExtra("nombreUsuarioNovedades")
+        tvNombreUsuarioNovedades.text = nombre
 
+        //Buscador de artículos
         buscadorSubastas.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
@@ -63,53 +67,19 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
             }
 
         })
+
         novedades = ArrayList()
 
-        var ref = data!!.getReference("ArticulosDeVenta")
-        ref?.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(p0: DataSnapshot) {
-                if (p0!!.exists()) {
-                    for (x in p0.children) {
-                        novedades!!.removeAll(novedades!!)
-                        val articulo = x.getValue(ObjetoNovedad::class.java)
-                        novedades?.add(articulo!!)
-                    }
-                }
-            }
 
-            override fun onCancelled(p0: DatabaseError) {
-                Log.e("errorRecycleView", "error al cargar el recycleView")
-            }
-
-        })
         imagenUsuario1.setOnClickListener {
-           loginUsuario()
+            infoUsuario()
         }
 
-        novedades?.add(
-            ObjetoNovedad(
-                "Sombrero", 3.50, "Sombrero negro y de copa",
-                "Antonio", R.drawable.abc_btn_radio_material
-            )
-        )
 
-        novedades?.add(
-            ObjetoNovedad(
-                "Raton", 4.75, "Esta vivo",
-                "Pepe", R.drawable.abc_btn_radio_material
-            )
-        )
-
-        lista = findViewById(R.id.recycleViewNovedades)
-        layoutManager = LinearLayoutManager(this)
-        adaptador = AdapterNovedades(this, novedades!!)
-        lista?.layoutManager = layoutManager
-        lista?.adapter = adaptador
 
 
         botonSubastasPrincipal.setOnClickListener {
-            val intSubastas = Intent(this, PantallaPrincipalSubastas::class.java)
-            startActivity(intSubastas)
+         infoSubasta()
         }
 
         bVender1.setOnClickListener {
@@ -121,7 +91,6 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
     private fun filtrar(texto: String) {
         var filtrarLista: ArrayList<ObjetoNovedad> = ArrayList()
 
-
         for (n in this!!.novedades!!) {
             if (n.nombre.toLowerCase().contains(texto.toLowerCase())) {
                 filtrarLista.add(n)
@@ -130,37 +99,96 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
         adaptador?.filtrarLista(filtrarLista)
     }
 
-    private fun loginUsuario() {
+    private fun infoUsuario() {
         val correo: String = intent.getStringExtra("correo")
         val contrasena: String = intent.getStringExtra("contraUsuarioNovedades")
-                auth.signInWithEmailAndPassword(correo, contrasena)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            vistaNovedades(correo,contrasena)
-                        } else {
-                            if (task.exception is FirebaseAuthUserCollisionException) {
-                                Toast.makeText(
-                                    this,
-                                    "Error de autentificación vuelve a escribir los datos",
-                                    Toast.LENGTH_LONG
-                                )
-                            }
-
-
-                        }
+        auth.signInWithEmailAndPassword(correo, contrasena)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    vistaNovedades(correo, contrasena)
+                } else {
+                    if (task.exception is FirebaseAuthUserCollisionException) {
+                        Toast.makeText(
+                            this,
+                            "Error de autentificación vuelve a escribir los datos",
+                            Toast.LENGTH_LONG
+                        )
                     }
 
-        }
-    private fun vistaNovedades(u:String,contra:String) {
-        val pos: Int = u.indexOf("@")
-        val user: String = u.substring(0, pos)
+
+                }
+            }
+
+    }
+
+
+    private fun vistaNovedades(correo: String, contra: String) {
+        val pos: Int = correo.indexOf("@")
+        val user: String = correo.substring(0, pos)
         val intent = Intent(this, PantallaUsuario::class.java)
         intent.putExtra("nombrePerfil", user)
         intent.putExtra("contraPerfil", contra)
+        intent.putExtra("correoPerfil",correo)
         startActivity(intent)
+    }
 
+    private fun infoSubasta() {
+        val correo: String = intent.getStringExtra("correo")
+        val contrasena: String = intent.getStringExtra("contraUsuarioNovedades")
+
+        auth.signInWithEmailAndPassword(correo, contrasena)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+
+                    vistaSubastas(correo, contrasena)
+                } else {
+                    if (task.exception is FirebaseAuthUserCollisionException) {
+                        Toast.makeText(
+                            this,
+                            "Error de autentificación vuelve a escribir los datos",
+                            Toast.LENGTH_LONG
+                        )
+                    }
+                }
+            }
     }
+
+    private fun vistaSubastas(correo: String, contra: String){
+        val pos: Int = correo.indexOf("@")
+        val user: String = correo.substring(0, pos)
+        val intent = Intent(this, PantallaPrincipalSubastas::class.java)
+        intent.putExtra("nombreSubasta", user)
+        intent.putExtra("contraSubasta", contra)
+        intent.putExtra("corroSubasta",correo)
+        startActivity(intent)
     }
+
+    private fun rellenarRecycleViex(){
+        var ref = data!!.getReference("ArticulosEnVentas")
+
+        ref?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (dt in dataSnapshot.children) {
+                    val prod = dt.getValue(ObjetoNovedad::class.java)
+                    Log.i("Datos", dt.value!!.toString())
+                    if (prod != null) {
+                        novedades!!.add(prod)
+                    }
+                }
+                lista = findViewById(R.id.recycleViewNovedades)
+                layoutManager = LinearLayoutManager(this@PantallaPrincipalNovedades)
+                adaptador = AdapterNovedades(this@PantallaPrincipalNovedades, novedades!!)
+                lista?.layoutManager = layoutManager
+                lista?.adapter = adaptador
+            }
+            override fun onCancelled(p0: DatabaseError) {
+                Log.e("errorRecycleView", "error al cargar el recycleView")
+            }
+
+        })
+    }
+
+}
 
 
 

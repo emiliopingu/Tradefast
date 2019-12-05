@@ -109,7 +109,6 @@ class PantallaRegistro : AppCompatActivity() {
                             }
                         }
 
-
                     } else {
                         Toast.makeText(this@PantallaRegistro, "Necesitas ser mayor de edad", Toast.LENGTH_LONG)
                     }
