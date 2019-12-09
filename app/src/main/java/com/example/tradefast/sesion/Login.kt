@@ -9,10 +9,11 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
-import com.example.tradefast.PantallaPrincipalNovedades
+import com.example.tradefast.pantallasPrincipales.PantallaPrincipalNovedades
 import com.example.tradefast.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseUser
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -55,21 +56,20 @@ class Login : AppCompatActivity() {
     private fun loginUsuario() {
         val usuario: String = nombreInicio.text.toString()
         val contrasenaInicio: String = contraseñaInicio.text.toString()
-
         if (!TextUtils.isEmpty(usuario) && !TextUtils.isEmpty(contrasenaInicio)) {
             if (contrasenaInicio.length >= 6) {
-
                 auth.signInWithEmailAndPassword(usuario, contrasenaInicio)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            vistaNovedades(usuario,contrasenaInicio,usuario)
+                            val user = auth.currentUser
+                            vistaNovedades(user)
                         } else {
                             if (task.exception is FirebaseAuthUserCollisionException) {
                                 Toast.makeText(
                                     this,
                                     "Error de autentificación vuelve a escribir los datos",
                                     Toast.LENGTH_LONG
-                                )
+                                ).show()
                             }
 
 
@@ -80,18 +80,14 @@ class Login : AppCompatActivity() {
                     this@Login,
                     "la contraseña debe tener al menos 6 caracteres o mas",
                     Toast.LENGTH_LONG
-                )
+                ).show()
             }
         }
     }
 
-    private fun vistaNovedades(u:String,contra:String,correo:String) {
-        val pos: Int = u.indexOf("@")
-        val user: String = u.substring(0, pos)
+    private fun vistaNovedades(u: FirebaseUser?) {
         val intent = Intent(this@Login, PantallaPrincipalNovedades::class.java)
-        intent.putExtra("nombreUsuarioNovedades", user)
-        intent.putExtra("contraUsuarioNovedades", contra)
-        intent.putExtra("correo", correo)
+        intent.putExtra("UsuarioNovedades", u)
         startActivity(intent)
 
     }

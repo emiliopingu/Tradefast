@@ -1,22 +1,23 @@
 package com.example.tradefast
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.text.TextUtils
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
-import com.google.firebase.auth.FirebaseAuth
-import android.content.Intent
-import android.net.Uri
-import android.provider.MediaStore
-import android.text.TextUtils
-import android.view.View
-import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_main.*
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tradefast.objetos.ObjetoNovedad
+import com.example.tradefast.pantallasPrincipales.PantallaPrincipalNovedades
 import com.example.tradefast.sesion.Login
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_vender_objetos.*
+import java.util.*
 
 
 class VenderObjetos : AppCompatActivity() {
@@ -27,9 +28,10 @@ class VenderObjetos : AppCompatActivity() {
     private lateinit var imagenDeVenta: ImageView
 
     private lateinit var barraProgreso: ProgressBar
-    private lateinit var dbreference: DatabaseReference
-    private lateinit var database: FirebaseDatabase
-    private lateinit var auth: FirebaseAuth
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    var user = auth.currentUser
+    val db = FirebaseFirestore.getInstance()
+
 
     val id: String = ""
 
@@ -51,10 +53,7 @@ class VenderObjetos : AppCompatActivity() {
         }
 
         barraProgreso = ProgressBar(this)
-        database = FirebaseDatabase.getInstance()
-        auth = FirebaseAuth.getInstance()
 
-        dbreference = database.getReference("User")
 
         aceptarVenta.setOnClickListener {
             crearArticulo()
@@ -79,29 +78,68 @@ class VenderObjetos : AppCompatActivity() {
         }
     }
 
-    private fun vistaNovedades() {
-        startActivity(Intent(this, Login::class.java))
-    }
 
     private fun crearArticulo() {
-        val precio: String = precioDeVenta.text.toString()
-        if (!TextUtils.isEmpty(nombreDeVenta.text) && !TextUtils.isEmpty(precioDeVenta.text) &&
-            !TextUtils.isEmpty(descripcionDeVenta.text)
-        ) {
-            var preciod = java.lang.Double.parseDouble(precio)
-            val id: String? = dbreference.push().key
-            val objeto = ObjetoNovedad(
-                nombreDeVenta.text.toString(),
-                preciod,
-                descripcionDeVenta.text.toString(),
-                "",
-                imagenDeVenta.id
-            )
-            if (id != null) {
-                dbreference.child("ArticulosEnVentas").child(id).setValue(objeto)
+        if (user != null) {
+            val precio: String = precioDeVenta.text.toString()
+            val nombreArticulo = nombreDeVenta.text.toString()
+            val descripcion = descripcionDeVenta.text.toString()
+            val id=   UUID.randomUUID()
+            if (!TextUtils.isEmpty(nombreDeVenta.text) && !TextUtils.isEmpty(precioDeVenta.text) &&
+                !TextUtils.isEmpty(descripcionDeVenta.text)
+            ) {
+                if (esUnNumero(precio)) {
+                    var preciod = java.lang.Double.parseDouble(precio)
+                    if (preciod > 0) {
+                        val articuloNovedades = ObjetoNovedad(
+                            nombreArticulo, preciod, descripcion, user?.email!!, imagenDeVenta.id, false
+                        ,id.toString(),"")
+                        db.collection("articulosVenta").document(id.toString()).set(articuloNovedades)
+                            .addOnSuccessListener { documentReference ->
+                                Toast.makeText(
+                                    this@VenderObjetos,
+                                    "Se ha introducido correctamente el articulo",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(
+                                    this@VenderObjetos,
+                                    "No se ha introducido correctamente el articulo",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                    } else {
+                        Toast.makeText(this@VenderObjetos, "El precio es menor o igual que cero", Toast.LENGTH_LONG).show()
+
+                    }
+                } else {
+                    Toast.makeText(this@VenderObjetos, "El precio tiene una o varias letras", Toast.LENGTH_LONG).show()
+                }
+
+            } else {
+                Toast.makeText(this@VenderObjetos, "Rellena todo los campos", Toast.LENGTH_LONG).show()
             }
-            vistaNovedades()
+            val irNovedad = Intent(this@VenderObjetos, PantallaPrincipalNovedades::class.java)
+            startActivity(irNovedad)
+        } else {
+            Toast.makeText(this@VenderObjetos, "error al cargar usuario", Toast.LENGTH_LONG).show()
+            finish()
+            val errorPerfil = Intent(this@VenderObjetos, Login::class.java)
+            startActivity(errorPerfil)
+            FirebaseAuth.getInstance().signOut()
         }
+
+    }
+
+    private fun esUnNumero(cadena: String): Boolean {
+        try {
+            Integer.parseInt(cadena)
+            return true
+        } catch (nfe: NumberFormatException) {
+            return false
+        }
+
     }
 }
 

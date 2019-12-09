@@ -8,6 +8,7 @@
     -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
@@ -17,23 +18,19 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".PantallaDetallesNovedades">
+        </activity>
         <activity android:name=".sesion.Login">
-
         </activity>
         <activity android:name=".DatosPaypalCompra">
         </activity>
         <activity android:name=".VenderObjetos">
         </activity>
-
-        <activity android:name=".CompraNovedades">
-        </activity>
-
-
         <activity
                 android:name=".configuracion.SplashScreem"
                 android:label="@string/app_name"
-                android:theme="@style/SplashTheme"
-                android:noHistory="true">
+                android:noHistory="true"
+                android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -46,19 +43,19 @@
         </activity>
         <activity android:name=".PantallaInfoNovedades">
         </activity>
-        <activity android:name=".PantallaPrincipalSubastas">
+        <activity android:name=".pantallasPrincipales.PantallaPrincipalSubastas">
         </activity>
-        <activity android:name=".PantallaPrincipalNovedades">
+        <activity android:name=".pantallasPrincipales.PantallaPrincipalNovedades">
         </activity>
         <activity android:name=".PantallaSubirPuja">
         </activity>
         <activity android:name=".PantallaCompraConTarjeta">
         </activity>
-        <activity android:name=".PantallaPersonalizarPerfil">
+        <activity android:name=".pantallasDeUsuario.PantallaPersonalizarPerfil">
         </activity>
-        <activity android:name=".PantallaUsuario">
+        <activity android:name=".pantallasDeUsuario.PantallaUsuario">
         </activity>
-        <activity android:name=".PantallaDeAjustes">
+        <activity android:name=".sesion.PantallaDeAjustes">
         </activity>
         <activity android:name=".sesion.PantallaRegistro">
         </activity>

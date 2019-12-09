@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import com.example.tradefast.pantallasPrincipales.PantallaPrincipalNovedades
 import com.paypal.android.sdk.payments.*
 import kotlinx.android.synthetic.main.activity_pantalla_compra_con_tarjeta.*
 import org.json.JSONException
@@ -32,7 +33,6 @@ class PantallaCompraConTarjeta : AppCompatActivity() {
         val i = Intent(this, PayPalService::class.java)
         i.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config)
         startService(i)
-
 
 
         val payment = PayPalPayment(

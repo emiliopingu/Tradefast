@@ -1,11 +1,9 @@
 package com.example.tradefast.objetos
 
 class ObjetoUsuario(
-    id: String?, nombre: String, apellido: String, contrasena: String, correo: String, edad: String, imagen:Int,
+     nombre: String, apellido: String, contrasena: String, correo: String, edad: String, imagen:Int,
     articulos: ArrayList<ObjetoNovedad>?
 ) {
-
-    var id: String = ""
     var nombre: String = ""
     var apellido: String = ""
     var contrasena: String = ""
@@ -15,7 +13,6 @@ class ObjetoUsuario(
     var articulos:ArrayList<ObjetoNovedad>?=null
 
     init {
-        this.id = id!!
         this.nombre = nombre
         this.apellido = apellido
         this.contrasena = contrasena

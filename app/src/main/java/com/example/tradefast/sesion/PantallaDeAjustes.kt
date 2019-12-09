@@ -1,8 +1,10 @@
-package com.example.tradefast
+package com.example.tradefast.sesion
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.tradefast.pantallasPrincipales.PantallaPrincipalNovedades
+import com.example.tradefast.R
 import kotlinx.android.synthetic.main.activity_pantalla_de_ajustes.*
 
 class PantallaDeAjustes : AppCompatActivity() {

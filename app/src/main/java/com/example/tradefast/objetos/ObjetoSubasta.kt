@@ -1,12 +1,13 @@
 package com.example.tradefast.objetos
 
-class ObjetoSubasta(nombre:String,pujaInicial:Double,pujaFinal:Double,usuario:String,foto:Int) {
+class ObjetoSubasta(nombre:String,pujaInicial:Double,pujaFinal:Double,usuario:String,foto:Int,id:Int) {
 
     var nombre:String=""
     var pujaInicial:Double=0.0
     var pujaFinal:Double=0.0
     var usuario:String=""
     var foto:Int=0
+    var id:Int=0
 
     init {
         this.nombre = nombre
@@ -14,5 +15,6 @@ class ObjetoSubasta(nombre:String,pujaInicial:Double,pujaFinal:Double,usuario:St
         this.pujaFinal = pujaFinal
         this.usuario = usuario
         this.foto = foto
+        this.id=id
     }
 }

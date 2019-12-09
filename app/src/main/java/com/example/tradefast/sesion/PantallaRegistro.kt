@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
@@ -17,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.example.tradefast.objetos.ObjetoUsuario
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class PantallaRegistro : AppCompatActivity() {
@@ -28,10 +30,8 @@ class PantallaRegistro : AppCompatActivity() {
     private lateinit var registroCorreoElectronico: EditText
     private lateinit var registroEdad: EditText
     private lateinit var barraProgreso: ProgressBar
-    private lateinit var dbreference: DatabaseReference
-    private lateinit var database: FirebaseDatabase
+    val db = FirebaseFirestore.getInstance()
     private lateinit var auth: FirebaseAuth
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,19 +48,10 @@ class PantallaRegistro : AppCompatActivity() {
 
         barraProgreso = ProgressBar(this)
 
-        database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
 
-        dbreference = database.getReference("User")
 
-        val act = this
-        auth.addAuthStateListener { firebaseAuth ->
-            Toast.makeText(
-                act,
-                firebaseAuth.currentUser!!.email,
-                Toast.LENGTH_LONG
-            ).show()
-        }
+
 
 
 
@@ -81,7 +72,7 @@ class PantallaRegistro : AppCompatActivity() {
         if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(apellido) && !TextUtils.isEmpty(contrasena) &&
             !TextUtils.isEmpty(contrasena2) && !TextUtils.isEmpty(correo) && !TextUtils.isEmpty(edad)
         ) {
-            if (contrasena.length <= 6 && contrasena2.length <= 6) {
+            if (contrasena.length >= 6 && contrasena2.length >= 6) {
 
                 if (contrasena == contrasena2) {
 
@@ -91,29 +82,32 @@ class PantallaRegistro : AppCompatActivity() {
 
                         auth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
-                                val id: String? = dbreference.push().key
-                                val datosUsuario =
-                                    ObjetoUsuario(id, nombre, apellido, contrasena, correo, edad, 0,null)
-                                if (id != null) {
-                                    dbreference.child("Usuario").child(id).setValue(datosUsuario)
-                                    val IDparaVenta = Intent(this, VenderObjetos::class.java)
-                                    intent.putExtra("idUsuarioVender", id)
-                                    setResult(1,IDparaVenta)
+                                val usuario = ObjetoUsuario(
+                                    nombre, apellido, contrasena,
+                                    correo, edad, 0, null
+                                )
+                                db.collection("usuario").document(correo).set(usuario)
+                                    .addOnSuccessListener { documentReference ->
+                                    Toast.makeText(this@PantallaRegistro,"Se registro con existo",Toast.LENGTH_LONG).show()
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Toast.makeText(this@PantallaRegistro,"No see registro con existo",Toast.LENGTH_LONG).show()
+                                    }
 
-                                }
                                 vistaLogin()
                             } else {
                                 if (task.exception is FirebaseAuthUserCollisionException) {
                                     Toast.makeText(this@PantallaRegistro, "Esta cuenta ya existe", Toast.LENGTH_LONG)
+                                        .show()
                                 }
                             }
                         }
 
                     } else {
-                        Toast.makeText(this@PantallaRegistro, "Necesitas ser mayor de edad", Toast.LENGTH_LONG)
+                        Toast.makeText(this@PantallaRegistro, "Necesitas ser mayor de edad", Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Toast.makeText(this@PantallaRegistro, "Escriba bien la contraseña", Toast.LENGTH_LONG)
+                    Toast.makeText(this@PantallaRegistro, "Escriba bien la contraseña", Toast.LENGTH_LONG).show()
                 }
 
 
@@ -122,7 +116,7 @@ class PantallaRegistro : AppCompatActivity() {
                     this@PantallaRegistro,
                     "la contraseña debe de tener6 o mas caracteres",
                     Toast.LENGTH_LONG
-                )
+                ).show()
             }
 
         }

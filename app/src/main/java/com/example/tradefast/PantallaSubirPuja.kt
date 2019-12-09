@@ -3,6 +3,7 @@ package com.example.tradefast
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.tradefast.pantallasPrincipales.PantallaPrincipalNovedades
 import kotlinx.android.synthetic.main.activity_pantalla_subir_puja.*
 
 class PantallaSubirPuja : AppCompatActivity() {
