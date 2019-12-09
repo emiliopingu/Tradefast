@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.example.tradefast.objetos.ObjetoUsuario
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 
 class PantallaRegistro : AppCompatActivity() {
@@ -68,6 +69,7 @@ class PantallaRegistro : AppCompatActivity() {
         val contrasena2: String = RegistroContraseña2.text.toString()
         val correo: String = registroCorreoElectronico.text.toString()
         val edad: String = registroEdad.text.toString()
+        val id= UUID.randomUUID()
 
         if (!TextUtils.isEmpty(nombre) && !TextUtils.isEmpty(apellido) && !TextUtils.isEmpty(contrasena) &&
             !TextUtils.isEmpty(contrasena2) && !TextUtils.isEmpty(correo) && !TextUtils.isEmpty(edad)
@@ -84,9 +86,9 @@ class PantallaRegistro : AppCompatActivity() {
                             if (task.isSuccessful) {
                                 val usuario = ObjetoUsuario(
                                     nombre, apellido, contrasena,
-                                    correo, edad, 0, null
-                                )
-                                db.collection("usuario").document(correo).set(usuario)
+                                    correo, edad, 0, null,
+                                id.toString())
+                                db.collection("usuario").document(id.toString()).set(usuario)
                                     .addOnSuccessListener { documentReference ->
                                     Toast.makeText(this@PantallaRegistro,"Se registro con existo",Toast.LENGTH_LONG).show()
                                     }

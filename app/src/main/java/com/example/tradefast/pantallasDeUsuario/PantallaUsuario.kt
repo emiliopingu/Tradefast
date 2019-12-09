@@ -49,27 +49,38 @@ class PantallaUsuario : AppCompatActivity() {
     }
 
     private fun llamarAdatos() {
-        var correo: String = user!!.email!!
-        db.collection("usuario").document(correo).get().addOnSuccessListener { documento ->
-            if (documento.exists()) {
-                val nombre = documento.getString("nombre")
-                val apellido = documento.getString("apellido")
-                val correo = documento.getString("correo")
-                val edad = documento.getString("edad")
-                nombrePerfil.text = "Nombre : $nombre"
-                apellidoPerfil.text = "Apellido : $apellido"
-                correPerfil.text = "Correo : $correo"
-                edadPerfil.text = "edad = $edad"
+
+       val correo=user!!.email
+        db.collection("usuario")
+            .get()
+            .addOnSuccessListener { documento ->
+                for (x in documento) {
+                    val correoUsuario = x.getString("correo")
+                    val id = x.getString("id")
+                    if(correo==correoUsuario) {
+                        db.collection("usuario").document(id!!).get().addOnSuccessListener { documento ->
+                            if (documento.exists()) {
+                                val nombre = documento.getString("nombre")
+                                val apellido = documento.getString("apellido")
+                                val correo = documento.getString("correo")
+                                val edad = documento.getString("edad")
+                                nombrePerfil.text = "Nombre : $nombre"
+                                apellidoPerfil.text = "Apellido : $apellido"
+                                correPerfil.text = "Correo : $correo"
+                                edadPerfil.text = "edad = $edad"
+
+                        }else{
+                                Toast.makeText(this@PantallaUsuario, "error  en traer el los datos", Toast.LENGTH_LONG).show()
+                                finish()
+                                FirebaseAuth.getInstance().signOut()
+                                val intent = Intent(this, Login::class.java)
+                                startActivity(intent)
+                            }
 
 
-            } else {
-                Toast.makeText(this@PantallaUsuario, "error  en traer el nombre", Toast.LENGTH_LONG).show()
-                finish()
-                FirebaseAuth.getInstance().signOut()
-                val intent = Intent(this, Login::class.java)
-                startActivity(intent)
+                    }
+                }
             }
-
         }
 
 

@@ -68,21 +68,31 @@ class PantallaPrincipalNovedades : AppCompatActivity() {
 
     private fun llamarAdatos() {
         var correo: String = user!!.email!!
-        db.collection("usuario").document(correo).get().addOnSuccessListener { documento ->
-            if (documento.exists()) {
-                val nombre = documento.getString("nombre")
-                tvNombreUsuarioNovedades.text = "Usuario $nombre"
-            } else {
-                Toast.makeText(this@PantallaPrincipalNovedades, "error  en traer el nombre", Toast.LENGTH_LONG).show()
-                finish()
-                FirebaseAuth.getInstance().signOut()
-                val intent = Intent(this, Login::class.java)
-                startActivity(intent)
+        db.collection("usuario")
+            .get()
+            .addOnSuccessListener { documento ->
+                for (x in documento) {
+                    val correoUsuario = x.getString("correo")
+                    val id = x.getString("id")
+                    if(correo==correoUsuario) {
+                        db.collection("usuario").document(id!!).get().addOnSuccessListener { documento ->
+                            if (documento.exists()) {
+                                val nombre = documento.getString("nombre")
+                                tvNombreUsuarioNovedades.text = "Usuario $nombre"
+                            } else {
+                                Toast.makeText(this@PantallaPrincipalNovedades, "error  en traer el nombre", Toast.LENGTH_LONG).show()
+                                finish()
+                                FirebaseAuth.getInstance().signOut()
+                                val intent = Intent(this, Login::class.java)
+                                startActivity(intent)
+                            }
+
+                        }
+
+
+                    }
+                }
             }
-
-        }
-
-
     }
 
     private fun rellenarRecycleViex() {
